@@ -5,7 +5,9 @@
 ![Screenshot 4](screenshot/4.png)
 
 > Desktop Experience
-> ![Screenshot of my desktop](screenshot/1.png)
+
+![Screenshot of my desktop](screenshot/1.png)
+
 > TMux Experience
 
 # Dotfiles of Thomas Leon Highbaugh
