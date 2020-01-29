@@ -7,15 +7,16 @@
 #####   ####    #   #      # ###### ######  ####             #       ###
 ```
 
-![Screenshot of my desktop](1.png)
+![Screenshot of my desktop](screenshot/1.png)
 
 # Dotfiles of Thomas Leon Highbaugh
 
 > Never mind the bullocks, here's my dotfiles!'
+
 > Makefile managed configurations of ZSH, BASH, VIM, NeoVim, Kitty, Alacritty, AwesomeWM, SpaceMacs, Docker, Git, GTK, Ranger, Rofi+DMenu, Zathura, Xresources, Pacman, Firefox and More
 > For Manjaro Linux (or other Arch based systems with Yay Installed)
 
-![Another Screensot](2.png)
+![Another Screensot](screenshot/2.png)
 
 ---
 
