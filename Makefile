@@ -45,6 +45,11 @@ help:
 
 all: sh zsh bash rc uefiupdate kitty laptop awesome archive disk X tmux vim neovim rofi browsers docker dev emacs fonts git gtk android media netsec vm minikube postgresql pip yarn
 
+laptop: sh zsh bash rc uefiupdate kitty laptop awesome archive disk X tmux vim neovim rofi browsers docker dev emacs fonts git gtk android media netsec vm minikube postgresql pip yarn
+vm: sh zsh bash rc kitty awesome archive disk X tmux vim neovim rofi browsers docker dev emacs fonts git gtk netsec pip yarn 
+desktop:sh zsh bash rc uefiupdate kitty awesome archive disk X tmux vim neovim rofi browsers docker dev emacs fonts git gtk android media netsec vm minikube postgresql pip yarn
+pi: sh zsh bash rc uefiupdate awesome archive disk X tmux vim neovim rofi browsers dev emacs fonts git gtk media netsec pip yarn
+
 android:
 	@echo 'Installing Android Packages'
 	sh ${PWD}/lib/install/android.sh 
