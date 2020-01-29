@@ -8,8 +8,6 @@
 
 ![Screenshot of my desktop](screenshot/1.png)
 
-
-
 # Dotfiles of Thomas Leon Highbaugh
 
 > Never mind the bullocks, here's my dotfiles!'
