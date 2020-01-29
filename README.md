@@ -1,4 +1,4 @@
-<h1 style="color:#8265ff; text-shadow:0.25rem 0.25rem #24262D;font-family:monospace; Font-size: 5rem;">Dotfiles</h1>
+<h1 style="color:#8265ff; text-shadow:0.25rem 0.25rem #24262D;font-family:monospace; Font-size: 5rem; text-align: center;">Dotfiles</h1>
 
 ![Screenshot of my desktop](screenshot/1.png)
 
