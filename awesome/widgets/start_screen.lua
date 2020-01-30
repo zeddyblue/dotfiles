@@ -20,7 +20,7 @@ function pad(size)
     return pad
 
 end
-local helpers = require("main.helpers")
+local helpers = require("configuration.helpers")
 -- Appearance
 local box_radius = dpi(12)
 local box_gap = dpi(6)
@@ -405,7 +405,7 @@ function start_screen_show()
     start_screen_grabber = awful.keygrabber.run(function(_, key, event)
         if event == "release" then return end
         -- Press Escape or q or F1 to hide it
-        if key == 'Escape' or key == 'q' or key == 'F1' then
+        if key == 'Escape' or key == 'q' or key == 'F3' then
             start_screen_hide()
         end
     end)

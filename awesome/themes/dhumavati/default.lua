@@ -50,8 +50,8 @@ theme.fg_focus      = theme.xcolor4
 theme.fg_urgent     = theme.xcolor1
 theme.fg_minimize   = theme.xforeground
 
-theme.useless_gap   = dpi(8)
-theme.border_width  = dpi(7)
+theme.useless_gap   = dpi(4)
+theme.border_width  = dpi(4)
 
 theme.border_normal = theme.xcolor0
 theme.border_focus  = theme.xcolor4
@@ -142,12 +142,12 @@ theme.menu_bg_focus = theme.xcolor0
 theme.menu_fg_focus = theme.xcolor4
 theme.menu_bg_normal = theme.xbackground
 theme.menu_fg_normal = theme.xcolor7
-theme.menu_submenu_icon = ""
+theme.menu_submenu_icon = ">"
 theme.menu_height = dpi(50)
 theme.menu_width  = dpi(280)
 theme.menu_border_color  = theme.xcolor4
 theme.menu_border_width  = dpi (3)
-theme.menu_font = "ProFontWindows Nerd Font Mono Bold 12"
+theme.menu_font = "Font Awesome 5 Regular 12"
 
 
 -- Hotkeys Popup
@@ -167,7 +167,7 @@ theme.hotkeys_description_font = "ProFontWindows Nerd Font Mono Bold 12"
 -- Taglist
 theme.taglist_font = "awesomewm-font 25"
 theme.taglist_bg = theme.xbackground
-theme.taglist_shape = gears.shape.rounded_rect
+theme.taglist_shape = gears.shape.rounded_bar
 theme.taglist_bg_focus = "#FC61F7"
 theme.taglist_fg_focus = theme.xbackground
 theme.taglist_bg_urgent = theme.xbackground

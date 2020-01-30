@@ -11,55 +11,55 @@ local beautiful = require("beautiful")
 local menubar = require("menubar")
 
 RC = {} -- global namespace, on top before require any modules
-RC.vars = require("main.user-variables")
+RC.vars = require("configuration.user-variables")
 modkey = RC.vars.modkey
 
 -- Error handling
-require("main.error-handling")
+require("configuration.error-handling")
 
 -- Themes
-require("main.theme")
+require("configuration.theme")
 
 -- -- --
-require("main.helpers")
+require("configuration.helpers")
 -- Calling All Module Libraries
 
 -- Custom Local Library
-local main = {
-  layouts = require("main.layouts"),
-  tags    = require("main.tags"),
-  menu    = require("main.menu"),
-  rules   = require("main.rules"),
-  helpers = require("main.helpers"),
+local configuration = {
+  layouts = require("configuration.layouts"),
+  tags    = require("configuration.tags"),
+  menu    = require("configuration.menu"),
+  rules   = require("configuration.rules"),
+  helpers = require("configuration.helpers"),
 }
 
 -- Custom Local Library: Keys and Mouse Binding
-local binding = {
-  globalbuttons = require("binding.globalbuttons"),
-  clientbuttons = require("binding.clientbuttons"),
-  globalkeys    = require("binding.globalkeys"),
-  clientkeys    = require("binding.clientkeys"),
-  bindtotags    = require("binding.bindtotags")
+local keys = {
+  globalbuttons = require("configuration.keys.globalbuttons"),
+  clientbuttons = require("configuration.keys.clientbuttons"),
+  globalkeys    = require("configuration.keys.globalkeys"),
+  clientkeys    = require("configuration.keys.clientkeys"),
+  bindtotags    = require("configuration.keys.bindtotags")
 }
 
 -- Layouts
-RC.layouts = main.layouts()
+RC.layouts = configuration.layouts()
 
 -- Tags
-RC.tags = main.tags()
+RC.tags = configuration.tags()
 
 -- Menu
-RC.mainmenu = awful.menu({ items = main.menu() }) -- in globalkeys
+RC.mainmenu = awful.menu({ items = configuration.menu() }) -- in globalkeys
 RC.launcher = awful.widget.launcher(
   { image = beautiful.awesome_icon, menu = RC.mainmenu }
 )
 menubar.utils.terminal = RC.vars.terminal
 -- Mouse and Key bindings
-RC.globalkeys = binding.globalkeys()
-RC.globalkeys = binding.bindtotags(RC.globalkeys)
+RC.globalkeys = keys.globalkeys()
+RC.globalkeys = keys.bindtotags(RC.globalkeys)
 
 -- Set root
-root.buttons(binding.globalbuttons())
+root.buttons(keys.globalbuttons())
 root.keys(RC.globalkeys)
 
 -- Keyboard map indicator and switcher
@@ -69,19 +69,19 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 -----------------------------------------------------
 
 -- Statusbar: Wibar
-require("deco.statusbar")
+require("widgets.statusbar")
 -----------------------------------------------------
 ---------------    Notifications    -----------------
 -----------------------------------------------------
 
-require("deco.notifications")
+require("widgets.notifications")
 -----------------------------------------------------
 ---------------     Rules      ----------------------
 -----------------------------------------------------
 
-awful.rules.rules = main.rules(
-  binding.clientkeys(),
-  binding.clientbuttons()
+awful.rules.rules = configuration.rules(
+  keys.clientkeys(),
+  keys.clientbuttons()
 )
 
 -----------------------------------------------------
@@ -89,7 +89,7 @@ awful.rules.rules = main.rules(
 -----------------------------------------------------
 
 -- Signals
-require("main.signals")
+require("configuration.signals")
 
 -----------------------------------------------------
 ---------------     Autostart      ------------------
@@ -102,9 +102,8 @@ awful.spawn.with_shell("numlockx on")
 -----------------------------------------------------
 ------------    Garbage Collection   ----------------
 -----------------------------------------------------
+ collectgarbage("setpause", 110)
  collectgarbage("setpause", 160)
  collectgarbage("setstepmul", 400)
-
- --collectgarbage("setpause", 110)
- --collectgarbage("setstepmul", 1000)
+ collectgarbage("setstepmul", 1000)
 

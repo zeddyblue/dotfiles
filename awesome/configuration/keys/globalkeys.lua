@@ -9,13 +9,12 @@ local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Menubar library
 local menubar = require("menubar")
-local start_screen = require("deco.start_screen")
+local start_screen = require("widgets.start_screen")
 -- Resource Configuration
 local modkey = RC.vars.modkey
 local terminal = RC.vars.terminal
 local browser = RC.vars.browser
 local file_manager = RC.vars.file_manager
-
 
 local _M = {}
 
@@ -26,8 +25,6 @@ local _M = {}
 
 function _M.get()
   local globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
-              {description="show help", group="Awesome"}),
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Tag browsing
@@ -48,7 +45,7 @@ function _M.get()
         {description = "focus previous by index", group = "Client"}
     ),
     awful.key({ modkey,           }, "w", function () RC.mainmenu:show() end,
-              {description = "show main menu", group = "Awesome"}),
+              {description = "show configuration menu", group = "Awesome"}),
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Layout manipulation
@@ -73,7 +70,8 @@ function _M.get()
 
     --   -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
     -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+
+      awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "Launch Terminal", group = "Awesome"}),
     awful.key({ modkey,           }, "b", function () awful.spawn(browser) end,
               {description = "Launch Internet Browser", group = "Awesome"}),
@@ -91,8 +89,9 @@ function _M.get()
     -- note: these are provided by ~/bin executables
        awful.key({ modkey,           }, "Escape", function () awful.spawn.with_shell("powermenu") end,
                  {description = "Power Menu", group = "Awesome"}),
-       awful.key({ modkey,           }, "F1", function () awful.spawn.with_shell("networkmenu") end,
-                 {description = "Network Manager Menu", group = "Awesome"}),
+      awful.key({ modkey,           }, "F1",      hotkeys_popup.show_help,
+          {description="show help", group="Awesome"}),
+
        awful.key({ modkey,           }, "F2", function () awful.spawn.with_shell("scrotmenu") end,
                  {description = "Screenshot Menu", group = "Awesome"}),
           awful.key({ modkey,           }, "F3", function()    start_screen_show() end,
@@ -103,6 +102,8 @@ function _M.get()
                  {description = "Virtualbox Manager", group = "Awesome"}),
                  awful.key({ modkey,           }, "F6", function()    awful.spawn.with_shell("fa-rofi") end,
                  {description = "Copy Font-Awesome Icons", group = "Awesome"}),
+                  awful.key({ modkey,           }, "F7", function () awful.spawn.with_shell("networkmenu") end,
+                 {description = "Network Manager Menu", group = "Awesome"}),
     -- Layout manipulation
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "Layout"}),

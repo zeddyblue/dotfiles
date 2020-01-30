@@ -8,7 +8,7 @@ local icondir = ""
 
 icondir = theme_path .. "titlebar/"
 
---icondir = icondir .. "clone/"
+--icondir = icondir .. "dhumavati/"
 -- icondir = icondir .. "zenburn/"
 -- icondir = icondir .. "copycat-copland/"
  icondir = icondir .. "default/"

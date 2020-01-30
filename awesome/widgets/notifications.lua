@@ -10,9 +10,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local wibox = require("wibox")
 local naughty = require("naughty")
-
-
-local helpers = require("main.helpers")
+local helpers = require("configuration.helpers")
 
 -- Icon size
 -- naughty.config.defaults['icon_size'] = beautiful.notification_icon_size
@@ -103,8 +101,7 @@ naughty.connect_signal("request::display", function(n)
     -- text/markup value from the notification before creating the
     -- naughty.layout.box.
     local custom_notification_icon = wibox.widget {
-        font = "icomoon 14",
-        -- font = "icomoon bold 40",
+        font = "Font Awesome Regular 40",
         align = "center",
         valign = "center",
         widget = wibox.widget.textbox

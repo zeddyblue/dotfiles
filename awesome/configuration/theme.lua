@@ -1,6 +1,7 @@
 -----------------------------------------------------------------
 ---------------------     Theme      ----------------------------
 -----------------------------------------------------------------
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
@@ -11,7 +12,7 @@ local beautiful = require("beautiful")
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 local home = os.getenv("HOME")
 
-beautiful.init(home .. "/.config/awesome/themes/clone/theme.lua")
+beautiful.init(home .. "/.config/awesome/themes/dhumavati/theme.lua")
 
 if (RC.vars.wallpaper) then
     local wallpaper = RC.vars.wallpaper
