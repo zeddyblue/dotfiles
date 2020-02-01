@@ -70,7 +70,7 @@ run pa-applet
 
 
 ## Compositor
-run compton
+run picom
 
 ## Bluetooth Manager
 run blueman-applet

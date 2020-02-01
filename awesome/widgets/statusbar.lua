@@ -96,8 +96,12 @@ awful.screen.connect_for_each_screen(function(s)
         layout   = {
             spacing = 1,
             top = 0,
-            layout  = wibox.layout.grid.horizontal
+            layout  = wibox.layout.grid.horizontal,
+                shape  = gears.shape.rounded_rect,
+
         },
+        shape  = gears.shape.rounded_bar,
+
     }
 
 
@@ -128,7 +132,7 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s, height = 33, ontop = true })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 40, ontop = true })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -143,6 +147,7 @@ awful.screen.connect_for_each_screen(function(s)
             {
                 s.mytaglist,
                 widget = wibox.container.margin,
+
             },
             bg = beautiful.taglist_bg,
             widget = wibox.container.background,

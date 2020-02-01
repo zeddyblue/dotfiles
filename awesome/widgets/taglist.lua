@@ -27,6 +27,7 @@ function _M.get()
     end),
     awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
     awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+
   )
 
   return taglist_buttons

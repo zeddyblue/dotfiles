@@ -15,47 +15,50 @@ local themes_path = require("gears.filesystem").get_themes_dir()
 
 
 -- font
-theme.font          = "ProFontWindows Nerd Font Mono Bold 12"
+theme.font          = "FuturaDisplayEF Regular 11"
 
 
 -- Load ~/.Xresources colors and set fallback colors
-theme.xbackground = "#17161B"
-theme.xforeground = xrdb.foreground or "#DEE6E7"
-theme.xcolor0 = xrdb.color0 or "#24262A"
-theme.xcolor1 = xrdb.color1 or "#F0719B"
-theme.xcolor2 = xrdb.color2 or "#5AF7B0"
-theme.xcolor3 = xrdb.color3 or "#FFA56B"
-theme.xcolor4 = xrdb.color4 or "#2196F3"
-theme.xcolor5 = xrdb.color5 or "#C792EA"
-theme.xcolor6 = xrdb.color6 or "#89DDFF"
-theme.xcolor7 = xrdb.color7 or "#DEE6E7"
-theme.xcolor8 = xrdb.color8 or "#4E515B"
-theme.xcolor9 = xrdb.color9 or "#F02E6E"
-theme.xcolor10 = xrdb.color10 or "#2CE592"
-theme.xcolor11 = xrdb.color11 or "#FF8537"
-theme.xcolor12 = xrdb.color12 or "#1DA0E2"
-theme.xcolor13 = xrdb.color13 or "#A742EA"
-theme.xcolor14 = xrdb.color14 or "#47BAE8"
-theme.xcolor15 = xrdb.color15 or "#DEE6E7"
-theme.xcolor16 = "#282A33"
-
-theme.bg_normal     = theme.xbackground
-theme.bg_focus      = theme.xcolor0 
+theme.xbackground = "#1E2026"
+theme.xforeground = xrdb.foreground or "#b6b1b1"
+theme.xcolor0 = "#282a33" -- dark gray
+theme.xcolor1 = "#FC61F7" -- red
+theme.xcolor2 = "#5AF7B0" -- green
+theme.xcolor3 = "#FFA56B" -- light orange
+theme.xcolor4 =  "#AD40FF" -- purple
+theme.xcolor5 =  "#9200FF" -- purple (primary)
+theme.xcolor6 =  "#89DDFF" -- light blue
+theme.xcolor7 =  "#b6b1b1" -- white
+theme.xcolor8 =  "#4E515B" -- gray (medium-lighter side)
+theme.xcolor9 =  "#F02E6E" -- red
+theme.xcolor10 =  "#2CE592" -- green
+theme.xcolor11 =  "#FF8537" --orange
+theme.xcolor12 =  "#44ddff" -- blue
+theme.xcolor13 =  "#C880FF" --light purple
+theme.xcolor14 = "#47BAE8" --light blue
+theme.xcolor15 = "#eeeeee" --white
+theme.xcolor16 = "#3C3F4C" -- gray (medium)
+theme.xcolor17 = "#f0ee6e" --canary
+theme.xcolor18 = "#ADB0BF" -- light gray
+theme.xcolor19 = "#490080" -- dark purple
+theme.xcolor20 = "#1E2026"  --dark gray
+theme.bg_normal     = theme.xcolor0
+theme.bg_focus      = theme.xbackground
 theme.bg_urgent     = theme.xcolor0
 theme.bg_minimize   = theme.xcolor0
-theme.bg_systray    = theme.xcolor0
+theme.bg_systray    = theme.xcolor16
 
 theme.fg_normal     = theme.xforeground
-theme.fg_focus      = theme.xcolor4
-theme.fg_urgent     = theme.xcolor1
+theme.fg_focus      = theme.xcolor7
+theme.fg_urgent     = theme.xcolor4
 theme.fg_minimize   = theme.xforeground
 
-theme.useless_gap   = dpi(4)
+theme.useless_gap   = dpi(6)
 theme.border_width  = dpi(4)
 
-theme.border_normal = theme.xcolor0
-theme.border_focus  = theme.xcolor4
-theme.border_marked = theme.xcolor4
+theme.border_normal = theme.xbackground
+theme.border_focus  = theme.xcolor5
+theme.border_marked = theme.xcolor5
 
 -- There are other variable sets
 -- overriding the default one when
@@ -78,33 +81,32 @@ theme.border_marked = theme.xcolor4
 
 -- Tasklist
 -- tasklist_[bg|fg]_[focus|urgent]
-theme.tasklist_font = "ProFontWindows Nerd Font Mono Bold 12"
+theme.tasklist_font = "FuturaDisplayEF Bold 11"
 theme.tasklist_bg_focus = theme.xbackground
 theme.tasklist_fg_focus = theme.xforeground
-theme.tasklist_bg_urgent = theme.xbackground
-theme.tasklist_fg_urgent = theme.xcolor1
-theme.tasklist_bg_normal = theme.xbackground
+theme.tasklist_bg_urgent = theme.xcolor0
+theme.tasklist_fg_urgent = theme.xforeground
+theme.tasklist_bg_normal = theme.xcolor0
 theme.tasklist_fg_normal = theme.xcolor7
 theme.tasklist_shape = gears.shape.square
 theme.tasklist_shape_border_width = 0
 theme.tasklist_align = "left"
-theme.tasklist_font_focus = "ProFontWindows Nerd Font Mono Bold 15"
-theme.tasklist_spacing = 10
+theme.tasklist_font_focus = "FuturaDisplayEF Bold 14"
+theme.tasklist_spacing = 5
 
 -- Titlebars
 -- titlebar_[bg|fg]_[normal|focus]
 theme.titlebar_bg_focus = theme.xcolor0
 theme.titlebar_bg_normal = theme.xbackground
 theme.titlebar_fg_focus = theme.xforeground
-theme.titlebar_fg_normal = theme.xcolor16
-theme.titlebar_size = dpi(32)
-theme.titlebar_font = "ProFontWindows Nerd Font Bold 12"
+theme.titlebar_fg_normal = theme.xcolor7
+theme.titlebar_font = "FuturaDisplayEF Bold 16"
 
 -- Tooltips
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
 theme.tooltip_fg = theme.fg_normal
 theme.tooltip_bg = theme.bg_normal
-theme.tooltip_font = "ProFontWindows Nerd Font Mono Bold 13"
+theme.tooltip_font = "FuturaDisplayEF Bold 13"
 theme.tooltip_border_width = dpi(3)
 theme.tooltip_border_color = xcolor4
 
@@ -121,20 +123,20 @@ theme.notification_opacity = 1
 theme.notification_icon_size_normal = dpi(64)
 theme.notification_icon_size_selected = dpi(64)
 theme.notification_margin = dpi(3)
-theme.notification_font = "ProFontWindows Nerd Font Mono Bold 18"
+theme.notification_font = "FuturaDisplayEF Bold 18"
 theme.notification_padding = dpi(3)
 
 -- Edge snap
-theme.snap_bg = theme.xcolor4
+theme.snap_bg = theme.xcolor7
 theme.snap_shape = gears.shape.rounded_rect
 
 -- Prompts
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
-theme.prompt_bg = theme.xcolor0
+theme.prompt_bg = theme.xcolor8
 theme.prompt_fg = theme.xforeground
 theme.prompt_fg_cursor = theme.xcolor7
 theme.prompt_bg_cursor = theme.xcolor7
-theme.prompt_font = "ProFontWindows Nerd Font Bold 13"
+theme.prompt_font = "FuturaDisplayEF Bold 13"
 
 
 -- Menu
@@ -145,9 +147,9 @@ theme.menu_fg_normal = theme.xcolor7
 theme.menu_submenu_icon = ">"
 theme.menu_height = dpi(50)
 theme.menu_width  = dpi(280)
-theme.menu_border_color  = theme.xcolor4
+theme.menu_border_color  = theme.xcolor5
 theme.menu_border_width  = dpi (3)
-theme.menu_font = "Font Awesome 5 Regular 12"
+theme.menu_font = "Font Awesome 5 Bold 12"
 
 
 -- Hotkeys Popup
@@ -157,27 +159,27 @@ theme.hotkeys_fg = theme.xcolor7
 theme.hotkeys_border_width = dpi(3)
 theme.hotkeys_border_color = theme.xcolor4
 theme.hotkeys_shape = gears.shape.rounded_rect
-theme.hotkeys_opacity = 0.95
-theme.hotkeys_modifiers_fg = theme.xcolor4
-theme.hotkeys_label_bg = theme.xcolor1
-theme.hotkeys_label_fg = theme.xcolor0
-theme.hotkeys_font = "ProFontWindows Nerd Font Mono Bold 15"
-theme.hotkeys_description_font = "ProFontWindows Nerd Font Mono Bold 12"
+theme.hotkeys_opacity = 0.75
+theme.hotkeys_modifiers_fg = theme.xcolor5
+theme.hotkeys_label_bg = theme.xcolor16
+theme.hotkeys_label_fg = theme.xbackground
+theme.hotkeys_font = "FuturaDisplayEF Bold 12"
+theme.hotkeys_description_font = "FuturaDisplayEF Bold 9"
 
 -- Taglist
-theme.taglist_font = "awesomewm-font 25"
-theme.taglist_bg = theme.xbackground
-theme.taglist_shape = gears.shape.rounded_bar
-theme.taglist_bg_focus = "#FC61F7"
-theme.taglist_fg_focus = theme.xbackground
-theme.taglist_bg_urgent = theme.xbackground
-theme.taglist_fg_urgent = "#FC61F7"
+theme.taglist_font = "awesomewm-font 30"
+theme.taglist_bg = theme.xcolor0
+theme.taglist_shape = gears.shape.octogon
+theme.taglist_bg_focus = theme.xcolor4
+theme.taglist_fg_focus = theme.xcolor0
+theme.taglist_bg_urgent = theme.xcolor17
+theme.taglist_fg_urgent = theme.xcolor1
 theme.taglist_bg_occupied = theme.xcolor0
 theme.taglist_fg_occupied = theme.xcolor4
-theme.taglist_bg_empty = theme.xbackground
-theme.taglist_fg_empty = "#3A3C4E"
-theme.taglist_bg_volatile = theme.xcolor0
-theme.taglist_fg_volatile = "#FC61F7"
+theme.taglist_bg_empty = theme.xcolor0
+theme.taglist_fg_empty = theme.xcolor8
+theme.taglist_bg_volatile = theme.xcolor1
+theme.taglist_fg_volatile = theme.xcolor0
 
 
 
