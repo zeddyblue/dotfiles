@@ -15,7 +15,7 @@ local modkey = RC.vars.modkey
 local terminal = RC.vars.terminal
 local browser = RC.vars.browser
 local file_manager = RC.vars.file_manager
-
+require ("widgets.quake-terminal")
 local _M = {}
 
 -- reading
@@ -89,6 +89,10 @@ function _M.get()
     -- note: these are provided by ~/bin executables
        awful.key({ modkey,           }, "Escape", function () awful.spawn.with_shell("powermenu") end,
                  {description = "Power Menu", group = "Awesome"}),
+      -- Dropdown application
+      awful.key({modkey,        }, '`', function() toggle_quake() end,
+          {description = 'dropdown application', group = 'launcher'}),
+
       awful.key({ modkey,           }, "F1",      hotkeys_popup.show_help,
           {description="show help", group="Awesome"}),
 

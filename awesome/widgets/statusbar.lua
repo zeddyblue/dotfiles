@@ -43,6 +43,10 @@ function pad(size)
     return pad
 
 end
+local systray = wibox.widget.systray()
+systray:set_horizontal(true)
+systray:set_base_size(32)
+
 -- memory widget
 mem = wibox.widget.textbox()
 vicious.cache(vicious.widgets.mem)
@@ -54,9 +58,6 @@ vicious.cache(vicious.widgets.cpu)
 vicious.register(cpu, vicious.widgets.cpu, " <span color='#8265FF'> CPU: </span> $1%  ", 4)
 cpu.font = "ProFontWindows Nerd Font Bold 12"
 
-local systray = wibox.widget.systray()
-systray:set_horizontal(false)
-systray:set_base_size(48)
 
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
@@ -134,33 +135,38 @@ awful.screen.connect_for_each_screen(function(s)
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.vertical,
-        expand = "none",
         { -- Left widgets
-            layout = wibox.layout.flex.vertical,
-            --z  mylauncher,
-            s.mypromptbox,
-            spacing = dpi(5),
+            layout = wibox.layout.fixed.vertical,
+            padding = 0,
 
         },
         {-- Middle widgets
 
             {
                 s.mytaglist,
-                widget = wibox.container.margin,
+                widget = wibox.container.background,
             },
             bg = beautiful.taglist_bg,
             shape = gears.shape.rounded_rect,
-            align = "center",
+            align = "top",
             widget = wibox.container.background,
-            top = 0,
-            bottom = 0,
             padding = 0,
-        },
-        { -- Right widgets
+            bottom = 0,
+            top = 0,
+            left = 0,
+            right = 0,
+            spacing = 0,
             layout = wibox.layout.align.vertical,
 
-            wibox.container.margin(systray, dpi(10), dpi(10)),
-     --       s.mylayoutbox,
+        },
+        { -- Right widgets
+            layout = wibox.layout.fixed.vertical,
+            padding = 0,
+            bottom = 0,
+            top = 0,
+            left = 0,
+            right = 0,
+           s.mylayoutbox,
 
         },
         margin = dpi(15),
@@ -184,8 +190,9 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             spacing = 10,
+           systray,
             mytextclock,
-            s.mylayoutbox,
+
         },
         bottom = 10,
         margin = 10,
