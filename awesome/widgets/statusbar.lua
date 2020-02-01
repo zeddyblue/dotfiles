@@ -33,7 +33,10 @@ local _M = {}
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- {{{ Wibar
-
+local spacer ={
+    widget =  wibox.container.background,
+    forced_width = dpi(500)
+}
 function pad(size)
     local str = ""
     for i = 1, size do
@@ -90,15 +93,21 @@ awful.screen.connect_for_each_screen(function(s)
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
-        layout   = {
-            spacing = 3,
+        style = {
             margins = 0,
             bottom = 0,
             top = 0,
             left =0,
             right= 0,
-            valign = 'center',
-            layout  = wibox.layout.fixed.vertical
+        },
+        layout   = {
+            spacing = 1,
+
+            bottom = 0,
+            top = 0,
+            left =0,
+            right= 0,
+            layout  = wibox.layout.fixed.horizontal
         },
     }
 
@@ -130,48 +139,45 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "left", screen = s, width = 45, ontop = true })
+    s.mywibox = awful.wibar({ position = "top", screen = s, height = 33, ontop = true })
 
     -- Add widgets to the wibox
     s.mywibox:setup {
-        layout = wibox.layout.align.vertical,
+
         { -- Left widgets
-            layout = wibox.layout.fixed.vertical,
-            padding = 0,
+            layout = wibox.layout.fixed.horizontal,
+            s.mylayoutbox,
 
         },
         {-- Middle widgets
 
             {
                 s.mytaglist,
-                widget = wibox.container.background,
+                widget = wibox.container.margin,
             },
             bg = beautiful.taglist_bg,
-            shape = gears.shape.rounded_rect,
-            align = "top",
             widget = wibox.container.background,
-            padding = 0,
-            bottom = 0,
-            top = 0,
-            left = 0,
-            right = 0,
-            spacing = 0,
-            layout = wibox.layout.align.vertical,
+            layout = wibox.layout.fixed.horizontal,
+            align="center",
+             spacing = 20,
+            expand = true,
+
 
         },
         { -- Right widgets
-            layout = wibox.layout.fixed.vertical,
-            padding = 0,
-            bottom = 0,
-            top = 0,
-            left = 0,
-            right = 0,
-           s.mylayoutbox,
+            layout = wibox.layout.fixed.horizontal,
+spacer,
+            systray,
+            right=0,
+            align = "right",
 
         },
-        margin = dpi(15),
+        layout = wibox.layout.grid.horizontal,
+        expand = true,
+
+
     }
-    s.mywibox2 = awful.wibar({ position = "top", screen = s, height = 35, ontop = true })
+    s.mywibox2 = awful.wibar({ position = "bottom", screen = s, height = 35, ontop = true })
 
     -- Add widgets to the wibox
     s.mywibox2:setup {
@@ -180,7 +186,8 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mylauncher,
             s.mypromptbox,
-            spacing = 30,
+            spacing = dpi(30),
+            left = dpi(10),
         },
         { -- Middle widget
             s.mytasklist,
@@ -190,15 +197,14 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             spacing = 10,
-           systray,
             mytextclock,
 
         },
-        bottom = 10,
-        margin = 10,
-        top = 10,
-        right = 10,
-        left = 10,
+        bottom = dpi(10),
+        margin = dpi(10),
+        top = dpi(10),
+        right = dpi(10),
+        left = dpi(10),
 
     }
 end)

@@ -92,7 +92,7 @@ user_picture_container.shape = gears.shape.circle
 user_picture_container.forced_height = dpi(240)
 user_picture_container.forced_width = dpi(240)
 local user_picture = wibox.widget {
-    wibox.widget.imagebox(os.getenv("HOME").."/.coNerd Fontig/awesome/profile.png"),
+    wibox.widget.imagebox(os.getenv("HOME").."/.config/awesome/profile.png"),
     widget = user_picture_container
 }
 local username = os.getenv("USER")
@@ -154,7 +154,7 @@ local function decorate_cell(widget, flag, date)
     local ret = wibox.widget {
         {
             widget,
-            margins = (props.padding or 2) + (props.border_width or 0),
+            margins = (props.padding or 2) + (props.border_width or 5),
             widget  = wibox.container.margin
         },
         shape              = props.shape,

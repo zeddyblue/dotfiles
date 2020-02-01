@@ -11,7 +11,8 @@ local freedesktop = require("freedesktop")
 local menubar = require("menubar")
 local M = {}  -- menu
 local _M = {} -- module
-
+local dpi = require('beautiful').xresources.apply_dpi
+local clickable_container = require('widgets.material.clickable-container')
 -- Article about Menus in Awesome Window Manager
 -- https://awesomewm.org/apidoc/popups%20and%20bars/awful.menu.html
 local home = os.getenv("HOME")
@@ -70,7 +71,7 @@ mymainmenu = freedesktop.menu.build({
         -- other triads can be put here
     }
 })
-mylauncher = awful.widget.launcher({image = home .. "/.config/awesome/themes/dhumavati/launcher/menu.svg",
+mylauncher = awful.widget.launcher({image = home .. "/.config/awesome/themes/dhumavati/icons/menu.svg", size = dpi(48),
                                      menu = mymainmenu })
 
 
