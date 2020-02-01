@@ -78,6 +78,7 @@ values."
           org-want-todo-bindings t
           org-enable-bootstrap-support t
           org-enable-github-support t
+          org-enable-org-journal-support t
           org-enable-trello-support t
           org-enable-reveal-js-support t)
      (python :variables
@@ -158,11 +159,15 @@ values."
     flycheck-golangci-lint
     git-messenger
     go-playground
+    prettier-js
     org-projectile-helm
     gotest
     highlight-indent-guides
     mode-icons
     projectile
+    (multiple-cursors :location (recipe :fetcher github
+                                        :repo "jacobono/multiple-cursors.el"
+                                        :branch "evil-ways"))
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -371,17 +376,21 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (spacemacs/toggle-golden-ratio-on)
   ;; https://emacs.stackexchange.com/a/19364
   (spacemacs/toggle-truncate-lines-on)
-  (spacemacs/toggle-toolbar-on)
+  (spacemacs/toggle-tool-bar-on)
   (add-hook 'text-mode-hook 'spacemacs/toggle-visual-line-navigation-on)
   ;; Enable Neotree at Startup
   ;; https://emacs.stackexchange.com/questions/20913/how-to-auto-toggle-neotree-on-startup#20915
-  (spacemacs/neotree-show)
+  (neotree-show)
   ;; Ranger
   (setq ranger-show-dotfiles t)
   (setq ranger-parent-depth 0)
   ;; Auto-complete
    (setq auto-completion-complete-with-key-sequence-delay 2)
   (spacemacs/toggle-visual-line-navigation-on)
+  (use-package prettier-js
+    :config
+    (add-hook 'js2-mode-hook 'prettier-js-mode)
+    (add-hook 'react-mode-hook 'prettier-js-mode))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
