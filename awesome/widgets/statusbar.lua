@@ -136,7 +136,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.vertical,
         expand = "none",
         { -- Left widgets
-            layout = wibox.layout.fixed.vertical,
+            layout = wibox.layout.flex.vertical,
             --z  mylauncher,
             s.mypromptbox,
             spacing = dpi(5),
@@ -157,7 +157,7 @@ awful.screen.connect_for_each_screen(function(s)
             padding = 0,
         },
         { -- Right widgets
-            layout = wibox.layout.fixed.vertical,
+            layout = wibox.layout.align.vertical,
 
             wibox.container.margin(systray, dpi(10), dpi(10)),
      --       s.mylayoutbox,

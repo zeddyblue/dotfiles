@@ -39,8 +39,6 @@ alias yt-dl-user="youtube-dl -o '%(uploader)s/%(playlist)s/%(playlist_index)s - 
 # NPM/YARN
 ###########################################################################
 
-alias npmgat="npm i && npm audit fix && npm rebuild && npm run build && npm run develop"
-alias yarngat="yarn && yarn upgrade && yarn build && yarn develop"
 alias npmup="npm update --global"
 alias yarnup="yarn upgrade --global"
 alias nvm8="nvm use 8"
@@ -55,7 +53,6 @@ alias yup="yay -Syyuu --noconfirm --needed "
 alias pup="sudo pacman -Syu --noconfirm "
 alias puprm="sudo pacman -Rns "
 alias yuprm="yay -Rns "
-alias aup="sudo aura -Ax  --noconfirm --needed"
 alias yupss="yay -Ss "
 alias pupss="sudo pacman -Ss "
 alias pupup="sudo pacman -Syyuu "
@@ -79,8 +76,8 @@ alias home="cd ~ "
 ## List Contents
 
 
-alias ll="ls -ahlF ${colorflag}" # List all files and directories, including hidden, with permissions
-
+alias ll="lsd -alh" # List all files and directories, including hidden, with permissions
+alias ls='lsd' #use lsd instead of ls everytime ls is called 
 # Git
 ###########################################################################
 
