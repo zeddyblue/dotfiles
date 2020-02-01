@@ -35,7 +35,7 @@ local _M = {}
 -- {{{ Wibar
 local spacer ={
     widget =  wibox.container.background,
-    forced_width = dpi(500)
+    forced_width = dpi(100)
 }
 function pad(size)
     local str = ""
@@ -93,21 +93,10 @@ awful.screen.connect_for_each_screen(function(s)
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
         buttons = taglist_buttons,
-        style = {
-            margins = 0,
-            bottom = 0,
-            top = 0,
-            left =0,
-            right= 0,
-        },
         layout   = {
             spacing = 1,
-
-            bottom = 0,
             top = 0,
-            left =0,
-            right= 0,
-            layout  = wibox.layout.fixed.horizontal
+            layout  = wibox.layout.grid.horizontal
         },
     }
 
@@ -157,23 +146,21 @@ awful.screen.connect_for_each_screen(function(s)
             },
             bg = beautiful.taglist_bg,
             widget = wibox.container.background,
-            layout = wibox.layout.fixed.horizontal,
+            layout = wibox.layout.align.horizontal,
             align="center",
-             spacing = 20,
-            expand = true,
 
 
         },
         { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-spacer,
+            layout = wibox.layout.align.horizontal,
             systray,
             right=0,
             align = "right",
 
         },
-        layout = wibox.layout.grid.horizontal,
-        expand = true,
+        layout = wibox.layout.align.horizontal,
+        expand = "none",
+        spacing =10,
 
 
     }
