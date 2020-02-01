@@ -1,4 +1,4 @@
 #!/bin/bash
-yay -S --noconfirm --needed tlpui smartctl
+yay -S --noconfirm --needed tlpui gsmartcontrol
 
 echo 'Finished Installing Laptop Packages'

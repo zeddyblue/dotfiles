@@ -255,6 +255,8 @@ rc:
 	sudo ln -svf ${PWD}/rc/ackrc ${HOME}/.ackrc
 	sudo ln -svf ${PWD}/rc/Trolltech.conf ${HOME}/.config/Trolltech.conf 
 	sudo ln -svf ${PWD}/xfce4 ${HOME}/.config/xfce4
+	sudo systemctl enable --now fstrim.timer 
+	sudo systemctl start fstrim.service
 rofi:
 	@echo 'Install Rofi Configuration'
 	sh ${PWD}/lib/install/rofi.sh
