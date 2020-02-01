@@ -60,20 +60,17 @@ archive:
 	sudo systemctl start snapd
 awesome:
 	@echo 'Installing Awesome Packages'
-	sh ${PWD}/lib/install/awesome.sh 
-	yay -S --needed  awesome-git
+########sh ${PWD}/lib/install/awesome.sh 
+########yay -S --needed  awesome-git
 	@echo 'Installing Awesome Configuration'
 	test -L ${HOME}/.config/awesome||  sudo rm -rf ${HOME}/.config/awesome
 	sudo mkdir -p ${HOME}/.config/awesome
 	sudo ln -sf ${PWD}/awesome/rc.lua ${HOME}/.config/awesome/rc.lua
-	sudo ln -sf ${PWD}/awesome/main ${HOME}/.config/awesome/main
-	sudo ln -sf ${PWD}/awesome/deco ${HOME}/.config/awesome/deco
-	sudo ln -sf ${PWD}/awesome/binding ${HOME}/.config/awesome/binding
+	sudo ln -sf ${PWD}/awesome/configuration ${HOME}/.config/awesome/configuration
+	sudo ln -sf ${PWD}/awesome/widgets ${HOME}/.config/awesome/widgets
 	sudo ln -sf ${PWD}/awesome/autorun.sh ${HOME}/.config/awesome/autorun.sh
 	sudo ln -sf ${PWD}/awesome/themes ${HOME}/.config/awesome/themes
 	sudo ln -sf ${PWD}/awesome/profile.png ${HOME}/.config/awesome/profile.png
-	@echo 'Reminder: You must copy the CSS in ~/dotfiles/browser into the randomly generated Firefox Profile for your browser to render the Firefox theme perfectly'
-
 bash:
 	@echo 'Installing Bash Packages'
 	sh ${PWD}/lib/install/bash.sh 
