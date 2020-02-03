@@ -15,7 +15,7 @@ local themes_path = require("gears.filesystem").get_themes_dir()
 
 
 -- font
-theme.font          = "FuturaDisplayEF Regular 11"
+theme.font          = "Codename Coder Free 4F Bold 12"
 
 
 -- Load ~/.Xresources colors and set fallback colors
@@ -83,7 +83,7 @@ theme.border_marked = theme.xcolor5
 
 -- Tasklist
 -- tasklist_[bg|fg]_[focus|urgent]
-theme.tasklist_font = "FuturaDisplayEF Bold 11"
+theme.tasklist_font = "Codename Coder Free 4F Bold 13"
 theme.tasklist_bg_focus = theme.xbackground
 theme.tasklist_fg_focus = theme.xforeground
 theme.tasklist_bg_urgent = theme.xcolor0
@@ -93,7 +93,7 @@ theme.tasklist_fg_normal = theme.xcolor7
 theme.tasklist_shape = gears.shape.square
 theme.tasklist_shape_border_width = 0
 theme.tasklist_align = "left"
-theme.tasklist_font_focus = "FuturaDisplayEF Bold 14"
+theme.tasklist_font_focus = "Codename Coder Free 4F Bold 15"
 theme.tasklist_spacing = 5
 
 -- Titlebars
@@ -102,13 +102,13 @@ theme.titlebar_bg_focus = theme.xcolor0
 theme.titlebar_bg_normal = theme.xbackground
 theme.titlebar_fg_focus = theme.xforeground
 theme.titlebar_fg_normal = theme.xcolor7
-theme.titlebar_font = "FuturaDisplayEF Bold 16"
+theme.titlebar_font = "Codename Coder Free 4F Bold 21"
 
 -- Tooltips
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
 theme.tooltip_fg = theme.fg_normal
 theme.tooltip_bg = theme.bg_normal
-theme.tooltip_font = "FuturaDisplayEF Bold 13"
+theme.tooltip_font = "Codename Coder Free 4F Bold 14"
 theme.tooltip_border_width = dpi(3)
 theme.tooltip_border_color = xcolor4
 
@@ -125,7 +125,7 @@ theme.notification_opacity = 1
 theme.notification_icon_size_normal = dpi(64)
 theme.notification_icon_size_selected = dpi(64)
 theme.notification_margin = dpi(3)
-theme.notification_font = "FuturaDisplayEF Bold 18"
+theme.notification_font = "Codename Coder Free 4F Bold 18"
 theme.notification_padding = dpi(3)
 
 -- Edge snap
@@ -138,7 +138,7 @@ theme.prompt_bg = theme.xcolor8
 theme.prompt_fg = theme.xforeground
 theme.prompt_fg_cursor = theme.xcolor7
 theme.prompt_bg_cursor = theme.xcolor7
-theme.prompt_font = "FuturaDisplayEF Bold 13"
+theme.prompt_font = "Codename Coder Free 4F Bold 13"
 
 
 -- Menu
@@ -165,8 +165,8 @@ theme.hotkeys_opacity = 0.75
 theme.hotkeys_modifiers_fg = theme.xcolor22
 theme.hotkeys_label_bg = theme.xcolor16
 theme.hotkeys_label_fg = theme.xbackground
-theme.hotkeys_font = "FuturaDisplayEF Regular 12"
-theme.hotkeys_description_font = "FuturaDisplayEF Regular 9"
+theme.hotkeys_font = "Codename Coder Free 4F Bold 14"
+theme.hotkeys_description_font = "Codename Coder Free 4F Bold 11"
 
 -- Taglist
 theme.taglist_font = "awesomewm-font 32"

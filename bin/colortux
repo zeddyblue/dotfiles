@@ -39,10 +39,10 @@ tuxfg=${blackf}     # tux line color
 
 cat << EOF
 ${tuxfg}${tuxbg}
-                      ▄█████▄
-                     █████████
+                 ${tuxbg}   ${whiteb}▄█████▄${tuxbg}
+                    ${whiteb}███████${tuxbg}
                     ${whiteb}████████▀██${tuxbg}
-                   ${whiteb}██████████▄██${tuxbg}
+        ${tuxbg}           ${whiteb}██████████▄██${tuxbg}
                    ${whiteb}██▀▀███▀▀████${tuxbg}
                    ${whiteb}████ █ ██ ███${tuxbg}
                    ${yellowb}█         ████${tuxbg}
