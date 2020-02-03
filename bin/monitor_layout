@@ -1,101 +1,47 @@
-
-IntelliJ IDEAPyCharm
 #!/bin/bash
 
-XRANDR=$(which xrandr)
+# options to be displyed
+option0="activate all monitors"
+option1="monitor <monitor0> primary"
+option2="monitor <monitor1> primary"
+option3="monitor <monitor1> same as <monitor0>"
+option4="monitor <monitor1> right of <monitor0>"
+option5="monitor <monitor1> left of <monitor0>"
+option6="monitor <monitor1> above <monitor0>"
+option7="monitor <monitor1> below <monitor0>"
+option8="rotate monitor <monitor1> right"
+option9="rotate monitor <monitor1> left"
+option10="rotate monitor <monitor1> normal"
 
-MONITORS=( $( ${XRANDR} | awk '( $2 == "connected" ){ print $1 }' ) )
+# Variable passed to rofi
+options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7\n$option8\n$option9\n$option10"
 
-
-NUM_MONITORS=${#MONITORS[@]}
-
-TITLES=()
-COMMANDS=()
-
-
-function gen_xrandr_only()
-{
-    selected=$1
-
-    cmd="xrandr --output ${MONITORS[$selected]} --auto "
-
-    for entry in $(seq 0 $((${NUM_MONITORS}-1)))
-    do
-        if [ $selected != $entry ]
-        then
-            cmd="$cmd --output ${MONITORS[$entry]} --off"
-        fi
-    done
-
-    echo $cmd
-}
-
-
-
-declare -i index=0
-TILES[$index]="Cancel"
-COMMANDS[$index]="true"
-index+=1
-
-
-for entry in $(seq 0 $((${NUM_MONITORS}-1)))
-do
-    TILES[$index]="Only ${MONITORS[$entry]}"
-    COMMANDS[$index]=$(gen_xrandr_only $entry)
-    index+=1
-done
-
-##
-# Dual screen options
-##
-for entry_a in $(seq 0 $((${NUM_MONITORS}-1)))
-do
-    for entry_b in $(seq 0 $((${NUM_MONITORS}-1)))
-    do
-        if [ $entry_a != $entry_b ]
-        then
-            TILES[$index]="Dual Screen ${MONITORS[$entry_a]} -> ${MONITORS[$entry_b]}"
-            COMMANDS[$index]="xrandr --output ${MONITORS[$entry_a]} --auto \
-                              --output ${MONITORS[$entry_b]} --auto --left-of ${MONITORS[$entry_a]}"
-
-            index+=1
-        fi
-    done
-done
-
-
-##
-# Clone monitors
-##
-for entry_a in $(seq 0 $((${NUM_MONITORS}-1)))
-do
-    for entry_b in $(seq 0 $((${NUM_MONITORS}-1)))
-    do
-        if [ $entry_a != $entry_b ]
-        then
-            TILES[$index]="Clone Screen ${MONITORS[$entry_a]} -> ${MONITORS[$entry_b]}"
-            COMMANDS[$index]="xrandr --output ${MONITORS[$entry_a]} --auto \
-                              --output ${MONITORS[$entry_b]} --auto --same-as ${MONITORS[$entry_a]}"
-
-            index+=1
-        fi
-    done
-done
-
-
-##
-#  Generate entries, where first is key.
-##
-function gen_entries()
-{
-    for a in $(seq 0 $(( ${#TILES[@]} -1 )))
-    do
-        echo $a ${TILES[a]}
-    done
-}
-
-# Call menu
-SEL=$( gen_entries | rofi -dmenu -p "Monitor Setup:" -a 0 -no-custom  | awk '{print $1}' )
-
-# Call xrandr
-$( ${COMMANDS[$SEL]} )
+selected="$(echo -e "$options" | rofi -lines 16 -columns 3 -dmenu -p "xrandr")"
+case $selected in
+    $option0)
+        xrandr --auto;;
+    $option1)
+        xrandr --output <monitor0> --off;;
+    $option2)
+        xrandr --output <monitor1> --off;;
+	$option3)
+		xrandr --output <monitor0> --primary;;
+	$option4)
+		xrandr --output <monitor1> --primary;;
+    $option5)
+        xrandr --output <monitor1> --same-as <monitor0>;;
+    $option6)
+        xrandr --output <monitor1> --right-of <monitor0>;;
+    $option7)
+        xrandr --output <monitor1> --left-of <monitor0>;;
+    $option8)
+        xrandr --output <monitor1> --above <monitor0>;;
+    $option9)
+        xrandr --output <monitor1> --below <monitor0>;;
+    $option10)
+        xrandr --output <monitor1> --rotate left;;
+    $option11)
+        xrandr --output <monitor1> --rotate right;;
+    $option12)
+        xrandr --output <monitor1> --rotate normal;;
+esac

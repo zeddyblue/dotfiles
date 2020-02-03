@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Thomas Leon Highbaugh 2020
+# Terminator
+## Takes the formatted and sorted output of ps command, displays through rofi and allows the user to kill the process
+rofi_command="rofi "
+
+
+chosen="$(ps -eo size,pid,command | sort -rn |  sed 1d | rofi -dmenu -i -p "Which one is Sarah Connor?" | awk '{print $2}' | xargs kill -${1:-9} ;)"

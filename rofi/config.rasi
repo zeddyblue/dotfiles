@@ -15,8 +15,8 @@ configuration {
 }
 
 * {
-      	font:		            "SF Mono Heavy 18";
-        background-color: #17181B; 
+      	font: "Codename Coder Free 4F Bold 22";
+        background-color: #1E2026;
 }
 
 #window {
@@ -29,12 +29,13 @@ configuration {
 
 #mainbox {
         children: [ entry, listview, mode-switcher ];
-        padding: 8em;
+        padding: 6%;
+        margin:5%;
 }
 
 entry {
         expand: false;
-        margin: 8px 8px ;
+        margin: 8px 8px;
 
 }
 
@@ -76,7 +77,7 @@ element selected.active {
 }
 
 element alternate.normal {
-        background-color: @window-color;
+        background-color: @background-light;
         text-color:       @normal-foreground;
 }
 
@@ -96,7 +97,7 @@ button {
 }
 
 button selected {
-        background-color: @active-background;
+        background-color: @hover;
         text-color:       @selected-normal-foreground;
         border:           3px 3px solid 3px 3px;
         border-color:     @selected-normal-foreground;

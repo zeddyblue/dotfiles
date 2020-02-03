@@ -1,20 +1,21 @@
 
 * {
-  background:                 #17181B;
-  background-light:           #24262A;
-  foreground:                 #DEE6E7;
-  text-color:                 #DEE6E7;
-  accent:                     #8265FF;
-  accent2:                    #8265FF;
-  hover:                #8265FF;
+  background:                 #1E2026;
+  background-lightest:         #3c3e4c;
+  background-light:           #282a33;
+  foreground:                 #EEEEEE;
+  text-color:                 #EEEEEE;
+  accent:                     #6700B3;
+  accent2:                    #F0EE6E;
+  hover:                #9200ff;
   urgent:               #f0719B;
   window:               #24262A;
-  selected-normal-foreground: #DEE6E7;
+  selected-normal-foreground: #EEEEEE;
                      
 spacing:                     5;
 normal-foreground:          @text;      
 selected-normal-background: @hover;     
-normal-background:          @background;
+normal-background:          @background-lightest;
 
 selected-urgent-foreground: @background;
 urgent-foreground:          @text;      

@@ -7,14 +7,14 @@
 	font:		 "FontAwesome Bold 28";
 }
 #window {
-  padding: 30%;
+  padding: @option-5-window-padding;
 }
 #listview {
   spacing: @option-3-listview-spacing;
   lines: 3;
 }
 #element{
-width: 50%;
-padding: 12%;
+width: 20%;
+padding: @option-element-padding;
 }
 

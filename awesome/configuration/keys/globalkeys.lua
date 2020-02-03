@@ -102,7 +102,7 @@ function _M.get()
                  {description = "Start Screen", group = "Awesome"}),
                  awful.key({ modkey,           }, "F4", function()    awful.spawn.with_shell("monitor_layout") end,
                  {description = "Start Screen", group = "Awesome"}),
-                  awful.key({ modkey,           }, "F5", function()    awful.spawn.with_shell("vbox-rofi") end,
+                  awful.key({ modkey,           }, "F5", function()    awful.spawn.with_shell("brightnessmenu") end,
                  {description = "Virtualbox Manager", group = "Awesome"}),
                  awful.key({ modkey,           }, "F6", function()    awful.spawn.with_shell("fa-rofi") end,
                  {description = "Copy Font-Awesome Icons", group = "Awesome"}),

@@ -1,204 +1,47 @@
-#!/usr/bin/zsh
-#
-# Setup outputs with xrandr as a backend and dmenu as a frontend
-#
+#!/bin/bash
 
-typeset XRANDR_TXT # readonly; stdout of running xrandr without any options
-typeset -A OUTPUT_CONFIGURED # key=connected output name
+# options to be displyed
+option0="activate all monitors"
+option1="monitor <monitor0> primary"
+option2="monitor <monitor1> primary"
+option3="monitor <monitor1> same as <monitor0>"
+option4="monitor <monitor1> right of <monitor0>"
+option5="monitor <monitor1> left of <monitor0>"
+option6="monitor <monitor1> above <monitor0>"
+option7="monitor <monitor1> below <monitor0>"
+option8="rotate monitor <monitor1> right"
+option9="rotate monitor <monitor1> left"
+option10="rotate monitor <monitor1> normal"
 
-function main() {
-  local -i iteration
-  local max_iteration
-  local output
-  local mode
-  local position
-  local xrandr_cmd
+# Variable passed to rofi
+options="$option0\n$option1\n$option2\n$option3\n$option4\n$option5\n$option6\n$option7\n$option8\n$option9\n$option10"
 
-  environment_check
-
-  max_iteration=${(w)#OUTPUT_CONFIGURED}
-  xrandr_cmd='xrandr'
-
-  while ! all_outputs_configured && (( $iteration <= $max_iteration )); do
-    if (( iteration++ )); then
-      select_output 'Select next output:' 'unconfigured' | read output
-      select_position "${output}" | read position
-      [[ "${position}" != '--off' ]] && select_mode "${output}" | read mode
-      OUTPUT_CONFIGURED[${output}]='true'
-    else
-      select_output 'Select primary output:' 'all' | read output
-      select_mode "${output}" | read mode
-      OUTPUT_CONFIGURED[${output}]='true'
-      position='--primary'
-    fi
-    xrandr_cmd+=" --output ${output} ${position} ${mode}"
-  done
-
-  ${=xrandr_cmd}
-}
-
-################################################################################
-# Select Output With Dmenu
-# Global variables:
-#  OUTPUT_CONFIGURED
-# Arguments:
-#  $1=prompt
-#  $2=group of outputs. valid options are configured, unconfigured, all
-# Returns:
-#  257=bad arguments
-#  258=bad selection 
-#  259=no options available
-################################################################################
-function select_output() {
-  local -a menu
-  local output
-  local -ir err_bad_args=257
-  local -ir err_bad_selection=258
-  local -ir err_no_options=259
-
-  case "$2" in
-    'configured')
-      for output in ${(k)OUTPUT_CONFIGURED}; do
-        ${OUTPUT_CONFIGURED[$output]} && menu+=("$output")
-      done
-      ;;
-    'unconfigured')
-      for output in ${(k)OUTPUT_CONFIGURED}; do
-        ${OUTPUT_CONFIGURED[$output]} || menu+=("$output")
-      done
-      ;;
-    'all') menu=(${(k)OUTPUT_CONFIGURED}) ;;
-    *) return "${err_bad_args}" ;;
-  esac
-
-  case ${#menu} in
-    0) return "${err_no_options}" ;;
-    1) echo "${menu}" ;;
-    *) echo ${(F)menu} | rofi -dmenu -l 10 -p "$1" ;;
-  esac
-}
-
-################################################################################
-# Relative Positioning As Compared to Already Configured Monitors 
-# Arguments:
-#  $1=name of output to configure
-# Returns:
-#  257=bad argument 
-#  258=bad selection
-#  259=no configured outputs to relate to (ie, no anchor)
-
-################################################################################
-function select_position() {
-  local anchor
-  local selection
-  local -ir err_bad_arg=257
-  local -ir err_bad_selection=258
-  local -ir err_no_anchor=259
-
-  [[ -z $1 ]] && return "${err_bad_arg}"
-
-  select_output "Set $1 relative to:" 'configured' | read anchor
-  [[ $? -eq 257 ]] && return "${err_no_anchor}"
-
-  echo "left of ${anchor}
-right of ${anchor}
-above ${anchor}
-below ${anchor}
-mirror ${anchor}
-off" | rofi -dmenu -l 10 -p "Select position of $1:" | read selection
-
-  case "${selection[(w)1]}" in
-    left) echo "--left-of ${anchor}" ;;
-    right) echo "--right-of ${anchor}" ;;
-    above) echo "--above ${anchor}" ;;
-    below) echo "--below ${anchor}" ;;
-    mirror) echo "--same-as ${anchor}" ;;
-    off) echo "--off" ;;
-    *) return "${err_bad_selection}" ;;
-  esac
-}
-
-################################################################################
-# Display Output Options for Given Monitor
-# Arguments:
-#  $1 - name of which output we are working with
-# Returns:
-#  257=bad arguements; 
-#  258=bad selection
-################################################################################
-function select_mode() {
-  local menu
-  local selection
-  local -ir err_bad_args=257
-  local -ir err_bad_selection=258
-
-  if [[ -z $1 ]] && return "${err_bad_args}"
-
-  # Not elegant but works for now, sed command could be addressed later and improved 
-  menu="$(echo \"${XRANDR_TXT}\" \
-    | sed -n '/^'$1' /,/^[^ ]/ s/ * //p' \
-    | cut -d ' ' -f 1 \
-    | grep x \
-    | cat <(echo auto) -)"
-
-  echo "${menu}" | rofi -dmenu -l 10 -p "Select mode for $1:" | read selection
-
-  case "${selection}" in
-    'auto') echo '--auto' ;;
-    *x*) echo "--mode ${selection}" ;;
-    *) return "${err_bad_selection}" ;;
-  esac
-}
-
-################################################################################
-# Verify Configuration of Attached Monitors 
-# Returns:
-#  0 - all outputs are configured
-#  257 - at least 1 output not configured
-################################################################################
-function all_outputs_configured() {
-  local config
-
-  for config in ${OUTPUT_CONFIGURED}; do
-    $config || return 257
-  done
-
-  return 0
-}
-
-function environment_check() {
-  if ! command -v cat &>/dev/null; then
-    echo 'You seem to be missing coreutils. Please install it from your distribution package manager in order to run this application.' >&2
-    exit 255
-  elif ! command -v grep &>/dev/null; then
-    echo 'Grep seems to be missing. Please install this from your choice of package manager in order to proceed.' >&2
-    exit 255
-  elif ! command -v xrandr &>/dev/null; then
-    echo "XRANDR does not seem to be installed and as you can imagine is vital to the execution of this application which is presenting you with a front end for it. You must have forgotten to install it during the reinstallation period (again). Please do so in order to proceed in a meaningful manner." >&2
-    exit 255
-elif ! command -v rofi &>/dev/null; then
-    echo "Either dmenu itself or dmenu-rofi is needed in order to provide you with an interface with which you can interact with. Thus you may choose either, but at least one will be required to proceed." >&2
-    exit 255
-  elif ! xset q &>/dev/null; then
-    echo 'This application requires the use of the X11 system' >&2
-    exit 1
-  fi
-}
-
-function initialize_globals() {
-  local output
-
-  XRANDR_TXT="$(xrandr)"
-  for output in $(grep ' connected' <<< "${XRANDR_TXT}" | cut -d ' ' -f 1); do
-    OUTPUT_CONFIGURED[${output}]='false'
-  done
-}
-
-initialize_globals
-readonly XRANDR_TXT
-main
-
-################################################################################
-# vim filetype=zsh autoindent expandtab shiftwidth=2 tabstop=2
-# End
-#
+selected="$(echo -e "$options" | rofi -lines 14 -dmenu -p "xrandr")"
+case $selected in
+    $option0)
+        xrandr --auto;;
+    $option1)
+        xrandr --output <monitor0> --off;;
+    $option2)
+        xrandr --output <monitor1> --off;;
+	$option3)
+		xrandr --output <monitor0> --primary;;
+	$option4)
+		xrandr --output <monitor1> --primary;;
+    $option5)
+        xrandr --output <monitor1> --same-as <monitor0>;;
+    $option6)
+        xrandr --output <monitor1> --right-of <monitor0>;;
+    $option7)
+        xrandr --output <monitor1> --left-of <monitor0>;;
+    $option8)
+        xrandr --output <monitor1> --above <monitor0>;;
+    $option9)
+        xrandr --output <monitor1> --below <monitor0>;;
+    $option10)
+        xrandr --output <monitor1> --rotate left;;
+    $option11)
+        xrandr --output <monitor1> --rotate right;;
+    $option12)
+        xrandr --output <monitor1> --rotate normal;;
+esac
