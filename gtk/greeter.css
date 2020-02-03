@@ -32,236 +32,220 @@
 @define-color menu_text_color @label_font_color;
 @define-color menu_text_color_active shade(@menu_text_color, 1.7);
 
-
-.menu
-{
-	background: @menu_color;
-	border: 1px solid @button_border_color;
+.menu {
+  background: @menu_color;
+  border: 1px solid @button_border_color;
 }
 
-.menu .menuitem
-{
-	padding: 4px;
+.menu .menuitem {
+  padding: 4px;
 }
 
 .menu .menuitem:active,
-.menu .menuitem:hover
-{
-	background: @menu_color;
-	border: 1px solid @button_border_color;
-	border-left: none;
-	border-right: none;
+.menu .menuitem:hover {
+  background: @menu_color;
+  border: 1px solid @button_border_color;
+  border-left: none;
+  border-right: none;
 }
 
 .menu .menuitem:active,
 .menu .menuitem *:active,
 .menu .menuitem:hover,
-.menu .menuitem *:hover
-{
-	color: @menu_text_color_active;
-	text-shadow: 0px 0px 3px @button_font_shadow_color;
+.menu .menuitem *:hover {
+  color: @menu_text_color_active;
+  text-shadow: 0px 0px 3px @button_font_shadow_color;
 }
 
 .menu .menuitem:insensitive,
-.menu .menuitem *:insensitive
-{
-    background: transparent;
-    color: shade(@menu_text_color_active, 0.3);
-	text-shadow: 0px 0px 1px shade(@menu_text_color_active, 0.3);
+.menu .menuitem *:insensitive {
+  background: transparent;
+  color: shade(@menu_text_color_active, 0.3);
+  text-shadow: 0px 0px 1px shade(@menu_text_color_active, 0.3);
 }
 
-.separator
-{
-    border-style: none;
-    color: shade(@menu_color, 0.9);
+.separator {
+  border-style: none;
+  color: shade(@menu_color, 0.9);
 }
 
-.menuitem.separator
-{
-    border-style: none;
-    color: shade(@button_border_color, 0.9);
+.menuitem.separator {
+  border-style: none;
+  color: shade(@button_border_color, 0.9);
 }
 
-GtkLabel
-{
-    color: @label_font_color;
+GtkLabel {
+  color: @label_font_color;
 }
 
-GtkButton
-{
-    background: @button_color;
-    color: @label_font_color;
-    box-shadow: none;
-    border-style: outset;
-    border-width: 1px;
-    border-color: @button_border_color;
-    border-radius: 5px;
+GtkButton {
+  background: @button_color;
+  color: @label_font_color;
+  box-shadow: none;
+  border-style: outset;
+  border-width: 1px;
+  border-color: @button_border_color;
+  border-radius: 5px;
 }
 
-GtkButton:hover
-{
-    background: @button_color_hover;
-    transition: 200ms linear;
+GtkButton:hover {
+  background: @button_color_hover;
+  transition: 200ms linear;
 }
 
-GtkButton:active
-{
-    background: @button_color_active;
-    color: shade(@label_font_color, 1.1);
-    box-shadow: 0px 0px 2px @button_box_shadow_color;
-    text-shadow: 0px 0px 1px @button_font_shadow_color;
-    transition: 100ms easy-in;
+GtkButton:active {
+  background: @button_color_active;
+  color: shade(@label_font_color, 1.1);
+  box-shadow: 0px 0px 2px @button_box_shadow_color;
+  text-shadow: 0px 0px 1px @button_font_shadow_color;
+  transition: 100ms easy-in;
 }
 
-GtkButton:focused
-{
-    background: @button_color_focused;
-    color: @button_font_color_focused;
-    transition: 125ms linear;
+GtkButton:focused {
+  background: @button_color_focused;
+  color: @button_font_color_focused;
+  transition: 125ms linear;
 }
 
-GtkButton *:insensitive
-{
-    background: @button_color_insensitive;
-    color: @combobox_font_color_insensitive;
-    text-shadow: 1px 1px shade(@combobox_font_color_insensitive, 0.5);
+GtkButton *:insensitive {
+  background: @button_color_insensitive;
+  color: @combobox_font_color_insensitive;
+  text-shadow: 1px 1px shade(@combobox_font_color_insensitive, 0.5);
 }
 
-GtkComboBox .separator
-{
-	-GtkWidget-wide-separators: true;
-	-GtkWidget-horizontal-separator: 0;
-	-GtkWidget-vertical-separator: 0;
+GtkComboBox .separator {
+  -gtkwidget-wide-separators: true;
+  -gtkwidget-horizontal-separator: 0;
+  -gtkwidget-vertical-separator: 0;
 }
 
-GtkComboBox *
-{
-	color: @combobox_font_color;
+GtkComboBox * {
+  color: @combobox_font_color;
 }
 
-GtkComboBox *:insensitive
-{
-    background: @button_color_insensitive;
-    color: @combobox_font_color_insensitive;
-    text-shadow: 1px 1px shade(@combobox_font_color_insensitive, 0.5);
-    -GtkArrow-arrow-scaling: 0;
+GtkComboBox *:insensitive {
+  background: @button_color_insensitive;
+  color: @combobox_font_color_insensitive;
+  text-shadow: 1px 1px shade(@combobox_font_color_insensitive, 0.5);
+  -gtkarrow-arrow-scaling: 0;
 }
 
-.entry
-{
-    box-shadow: inset 1px 1px alpha(@entry_box_shadow_color, 0.1);
-    padding: 3px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: @entry_border_color;
-    border-radius: 3px;
-    background-image: -gtk-gradient(linear, left top, left bottom,
-                                    from (shade(#ddd, 0.9)),
-                                    to (#ddd));
+.entry {
+  box-shadow: inset 1px 1px alpha(@entry_box_shadow_color, 0.1);
+  padding: 3px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: @entry_border_color;
+  border-radius: 3px;
+  background-image: -gtk-gradient(
+    linear,
+    left top,
+    left bottom,
+    from (shade(#ddd, 0.9)),
+    to (#ddd)
+  );
 }
 
 .entry:active,
-.entry:focus
-{
-    border-color: shade(@entry_border_color, 0.6);
+.entry:focus {
+  border-color: shade(@entry_border_color, 0.6);
 }
 
 .entry:selected,
-.entry:selected:focus
-{
-    background-color: light#eeeeee;
-    color: #080413;
+.entry:selected:focus {
+  background-color: light#eeeeee;
+  color: #080413;
 }
 
-GtkSpinner
-{
-    color: alpha(#eeeeee, 0.5);
+GtkSpinner {
+  color: alpha(#eeeeee, 0.5);
 }
 
-#main_border, #messagebox_border, #messagebox_content
-{
-    border-radius: 20px;
-    border: 2px solid alpha(shade(@greeter_head_color, 0.75), 0.5);
-    padding: 0px;
+#main_border,
+#messagebox_border,
+#messagebox_content {
+  border-radius: 20px;
+  border: 2px solid alpha(shade(@greeter_head_color, 0.75), 0.5);
+  padding: 0px;
 }
 
-#greeter_center, #messagebox_content
-{
-    background: @window_color;
+#greeter_center,
+#messagebox_content {
+  background: @window_color;
 }
 
-#greeter_top, #greeter_bottom, #messagebox_top, #messagebox_bottom
-{
-    background: @greeter_head_color;
+#greeter_top,
+#greeter_bottom,
+#messagebox_top,
+#messagebox_bottom {
+  background: @greeter_head_color;
 }
 
-#greeter_top, #messagebox_top
-{
-    border-radius: 18px 18px 0px 0px;
+#greeter_top,
+#messagebox_top {
+  border-radius: 18px 18px 0px 0px;
 }
 
-#greeter_bottom, #messagebox_bottom
-{
-    border-radius: 0px 0px 18px 18px;
+#greeter_bottom,
+#messagebox_bottom {
+  border-radius: 0px 0px 18px 18px;
 }
 
-#date_widget, #clock_time_widget, #host_widget, #layout_widget
-{
-    color: @greeter_head_label_color;
+#date_widget,
+#clock_time_widget,
+#host_widget,
+#layout_widget {
+  color: @greeter_head_label_color;
 }
 
-#message_widget
-{
-    box-shadow: 0px 0px 1px alpha(red, 0.5);
-    background: alpha(red, 0.05);
-    padding: 8px;
+#message_widget {
+  box-shadow: 0px 0px 1px alpha(red, 0.5);
+  background: alpha(red, 0.05);
+  padding: 8px;
 }
 
-#users_widget
-{
-    -GtkWidget-focus-line-width: 0px;
-    -GtkTreeView-vertical-separator: 10px;
-    background-color: transparent;
-    color: @users_font_color;
-    border: None;
-    border-radius: 6px;
-    transition: 125ms linear;
+#users_widget {
+  -gtkwidget-focus-line-width: 0px;
+  -gtktreeview-vertical-separator: 10px;
+  background-color: transparent;
+  color: @users_font_color;
+  border: None;
+  border-radius: 6px;
+  transition: 125ms linear;
 }
 
-#users_widget:selected
-{
-    background: @button_color;
-    color: @users_font_color_selected;
-    border-style: solid;
-    border-width: 1px;
-    border-color: @button_border_color;
-    transition: 250ms ease-in-out;
+#users_widget:selected {
+  background: @button_color;
+  color: @users_font_color_selected;
+  border-style: solid;
+  border-width: 1px;
+  border-color: @button_border_color;
+  transition: 250ms ease-in-out;
 }
 
-#users_widget:hover
-{
-    border-style: solid;
-    border-width: 1px;
-    border-color: @button_border_color;
-    box-shadow: 0px 0px 1px @users_box_shadow_color;
-    text-shadow: 0px 0px 1px @users_font_shadow_color;
+#users_widget:hover {
+  border-style: solid;
+  border-width: 1px;
+  border-color: @button_border_color;
+  box-shadow: 0px 0px 1px @users_box_shadow_color;
+  text-shadow: 0px 0px 1px @users_font_shadow_color;
 }
 
-#users_widget:hover:selected
-{
-    box-shadow: 0px 0px 3px @users_box_shadow_color;
-    text-shadow: none;
+#users_widget:hover:selected {
+  box-shadow: 0px 0px 3px @users_box_shadow_color;
+  text-shadow: none;
 }
 
-#authentication_widget
-{
-    text-shadow: 0px 0px 4px shade(@combobox_font_color_insensitive, 0.9);
-    color: @combobox_font_color_insensitive;
+#authentication_widget {
+  text-shadow: 0px 0px 4px shade(@combobox_font_color_insensitive, 0.9);
+  color: @combobox_font_color_insensitive;
 }
 
-#dialog_window, #dialog_window_info, #dialog_window_warning,
-#dialog_window_question, #dialog_window_error
-{
-    box-shadow: 0px 0px 2px #080413;
-    background: @greeter_head_color;
+#dialog_window,
+#dialog_window_info,
+#dialog_window_warning,
+#dialog_window_question,
+#dialog_window_error {
+  box-shadow: 0px 0px 2px #080413;
+  background: @greeter_head_color;
 }
