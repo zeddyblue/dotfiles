@@ -1,26 +1,48 @@
 ! Base colors
-*background:  #2b213a
-*foreground:  #b6b1b1
-*color0:      #17161B
-*color1:      #f92aad
-*color2:      #0BBDC7
-*color3:      #E702D8
-*color4:      #8265ff
-*color5:      #0BBDC7
-*color6:      #44ddff
-*color7:      #b6b1b1
-*color8:      #777c85
-*color9:      #f92aad
-*color10:     #99cc99
-*color11:     #f9ee98
-*color12:     #6ab0f3
-*color13:     #cc99cc
-*color14:     #44ddff
-*color15:     #dee6e7
-*color16:     #f9ee98
-*color17:     #e3795d
-*color18:     #3a3c4e
-*color19:     #777c85
-*color20:     #191919
-*color21:     #cccccc
-*color22:     #533393
+
+! special
+*.foreground:   #ebf0f8
+*.background:   #3C3F4C
+*.cursorColor:  #ebf0f8
+
+! black
+*.color0:       #282a33
+*.color8:       #3C3F4C
+
+! red
+*.color1:       #fa75a2
+*.color9:       #F02E6E
+
+! green
+*.color2:       #0BBDC7
+*.color10:      #0BBDC7
+
+! yellow
+*.color3:       #f0ee6e
+*.color11:      #f0ee6e
+
+! blue
+*.color4:       #44ddff
+*.color12:      #44ddff
+
+! magenta
+*.color5:       #B300A5
+*.color13:      #B300A5
+
+! cyan
+*.color6:       #82ddff
+*.color14:      #82ddff
+
+! white
+*.color7:       #ebf0f8
+*.color15:      #eeeeee
+
+! Extras
+*.color16:     #4E515B !lighter gray
+*.color17:     #8265FF !blue-purple
+*.color18:     #ADB0BF! white
+*.color19:     #490080 ! dark purple
+*.color20:     #9200FF !primary purple
+*.color21:     #1E2026 !black
+*.color22:     #533393 ! another purple
+
